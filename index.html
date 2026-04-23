@@ -1,0 +1,1778 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Eugine Gomez — UX Designer, WordPress Developer & SEO Specialist with 5+ years building conversion-driven digital experiences.">
+<meta name="keywords" content="UX Designer, WordPress Developer, SEO Specialist, Figma, Elementor, Philippines">
+<meta property="og:title" content="Eugine Gomez — UX Designer & SEO Specialist">
+<meta property="og:description" content="Building digital experiences that rank, convert, and inspire.">
+<title>Eugine Gomez — UX Designer, WordPress Developer & SEO Specialist</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0a0a0a;
+    --bg2: #111111;
+    --bg3: #1a1a1a;
+    --surface: #161616;
+    --border: rgba(255,255,255,0.07);
+    --border-hover: rgba(255,255,255,0.15);
+    --text: #f0ede8;
+    --text-muted: #888880;
+    --text-dim: #555550;
+    --accent: #b8ff57;
+    --accent2: #57c8ff;
+    --accent3: #ff6b35;
+    --accent-dim: rgba(184,255,87,0.08);
+    --accent-dim2: rgba(87,200,255,0.08);
+    --radius: 12px;
+    --radius-sm: 6px;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 16px;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* ── NOISE TEXTURE ── */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.4;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 100;
+    padding: 1.25rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(10,10,10,0.85);
+    backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .nav-logo {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: 1.1rem;
+    color: var(--text);
+    text-decoration: none;
+    letter-spacing: -0.02em;
+  }
+
+  .nav-logo span { color: var(--accent); }
+
+  .nav-links {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+  }
+
+  .nav-links a {
+    color: var(--text-muted);
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 400;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--text); }
+
+  .nav-cta {
+    background: var(--accent);
+    color: #0a0a0a !important;
+    padding: 0.5rem 1.25rem;
+    border-radius: 100px;
+    font-weight: 500 !important;
+    font-size: 0.82rem !important;
+    transition: opacity 0.2s !important;
+  }
+
+  .nav-cta:hover { opacity: 0.85; color: #0a0a0a !important; }
+
+  /* ── SECTIONS ── */
+  section { position: relative; z-index: 1; }
+
+  .container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 2rem;
+  }
+
+  /* ── HERO ── */
+  #hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding: 8rem 2rem 4rem;
+    overflow: hidden;
+  }
+
+  .hero-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 4rem;
+    align-items: center;
+  }
+
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: var(--accent-dim);
+    border: 1px solid rgba(184,255,87,0.2);
+    padding: 0.35rem 0.9rem;
+    border-radius: 100px;
+    font-size: 0.8rem;
+    color: var(--accent);
+    margin-bottom: 1.5rem;
+    font-weight: 500;
+    letter-spacing: 0.03em;
+  }
+
+  .hero-badge::before {
+    content: '';
+    width: 6px;
+    height: 6px;
+    background: var(--accent);
+    border-radius: 50%;
+    animation: pulse 2s infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.4; transform: scale(0.8); }
+  }
+
+  .hero-title {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: clamp(3rem, 7vw, 5.5rem);
+    line-height: 1;
+    letter-spacing: -0.04em;
+    margin-bottom: 1rem;
+  }
+
+  .hero-title .line2 {
+    color: transparent;
+    -webkit-text-stroke: 1px rgba(240,237,232,0.25);
+    display: block;
+  }
+
+  .hero-title .highlight { color: var(--accent); }
+
+  .hero-roles {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .role-tag {
+    padding: 0.3rem 0.85rem;
+    border-radius: 100px;
+    font-size: 0.78rem;
+    font-weight: 500;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+  }
+
+  .role-tag.ux { background: rgba(87,200,255,0.12); color: var(--accent2); border: 1px solid rgba(87,200,255,0.2); }
+  .role-tag.wp { background: rgba(184,255,87,0.10); color: var(--accent); border: 1px solid rgba(184,255,87,0.2); }
+  .role-tag.seo { background: rgba(255,107,53,0.12); color: var(--accent3); border: 1px solid rgba(255,107,53,0.25); }
+
+  .hero-desc {
+    color: var(--text-muted);
+    font-size: 1.05rem;
+    max-width: 520px;
+    margin-bottom: 2.5rem;
+    line-height: 1.75;
+  }
+
+  .hero-actions {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-bottom: 3rem;
+  }
+
+  .btn-primary {
+    background: var(--accent);
+    color: #0a0a0a;
+    padding: 0.85rem 2rem;
+    border-radius: 100px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.9rem;
+    font-family: 'Syne', sans-serif;
+    letter-spacing: 0.01em;
+    transition: all 0.2s;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .btn-primary:hover { opacity: 0.85; transform: translateY(-1px); }
+
+  .btn-secondary {
+    background: transparent;
+    color: var(--text);
+    padding: 0.85rem 2rem;
+    border-radius: 100px;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.9rem;
+    border: 1px solid var(--border-hover);
+    transition: all 0.2s;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .btn-secondary:hover { border-color: rgba(255,255,255,0.3); background: rgba(255,255,255,0.04); }
+
+  .hero-stats {
+    display: flex;
+    gap: 2.5rem;
+  }
+
+  .stat-item { }
+
+  .stat-num {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: 2.2rem;
+    letter-spacing: -0.04em;
+    color: var(--text);
+    line-height: 1;
+  }
+
+  .stat-num span { color: var(--accent); }
+
+  .stat-label {
+    font-size: 0.78rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-top: 0.25rem;
+  }
+
+  .hero-visual {
+    position: relative;
+  }
+
+  .hero-img-wrap {
+    width: 300px;
+    height: 380px;
+    border-radius: 20px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+    position: relative;
+  }
+
+  .hero-img-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top;
+    filter: grayscale(20%);
+  }
+
+  .hero-img-wrap::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, transparent 60%, rgba(10,10,10,0.8));
+  }
+
+  .hero-float-badge {
+    position: absolute;
+    bottom: -1rem;
+    left: -2rem;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 0.9rem 1.2rem;
+    font-size: 0.8rem;
+    min-width: 160px;
+    backdrop-filter: blur(8px);
+  }
+
+  .float-badge-label {
+    color: var(--text-muted);
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin-bottom: 0.25rem;
+  }
+
+  .float-badge-val {
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 1rem;
+    color: var(--accent);
+  }
+
+  /* ── SECTION HEADERS ── */
+  .section-label {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--accent);
+    font-weight: 500;
+    margin-bottom: 0.75rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .section-label::before {
+    content: '';
+    width: 24px;
+    height: 1px;
+    background: var(--accent);
+    display: block;
+  }
+
+  .section-title {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: clamp(2rem, 4vw, 3rem);
+    letter-spacing: -0.03em;
+    line-height: 1.1;
+    margin-bottom: 1rem;
+  }
+
+  .section-subtitle {
+    color: var(--text-muted);
+    font-size: 1rem;
+    max-width: 560px;
+    margin-bottom: 3.5rem;
+  }
+
+  /* ── DIVIDER ── */
+  .divider {
+    border: none;
+    height: 1px;
+    background: var(--border);
+    margin: 0;
+  }
+
+  /* ── ABOUT ── */
+  #about { padding: 7rem 0; }
+
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    align-items: start;
+  }
+
+  .about-text p {
+    color: var(--text-muted);
+    margin-bottom: 1.25rem;
+    font-size: 1.02rem;
+    line-height: 1.8;
+  }
+
+  .about-text p strong { color: var(--text); font-weight: 500; }
+
+  .about-highlights {
+    margin-top: 2rem;
+    display: grid;
+    gap: 1rem;
+  }
+
+  .highlight-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    padding: 1rem;
+    background: var(--surface);
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--border);
+  }
+
+  .highlight-icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    font-size: 16px;
+  }
+
+  .highlight-icon.green { background: var(--accent-dim); }
+  .highlight-icon.blue { background: var(--accent-dim2); }
+  .highlight-icon.orange { background: rgba(255,107,53,0.1); }
+
+  .highlight-title {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--text);
+    margin-bottom: 0.2rem;
+  }
+
+  .highlight-desc {
+    font-size: 0.82rem;
+    color: var(--text-muted);
+    line-height: 1.5;
+  }
+
+  .about-info-box {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 2rem;
+  }
+
+  .info-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 0.9rem 0;
+    border-bottom: 1px solid var(--border);
+    gap: 1rem;
+  }
+
+  .info-row:last-child { border-bottom: none; }
+
+  .info-key {
+    font-size: 0.78rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    flex-shrink: 0;
+  }
+
+  .info-val {
+    font-size: 0.88rem;
+    color: var(--text);
+    text-align: right;
+    font-weight: 400;
+  }
+
+  .cert-grid {
+    margin-top: 1.5rem;
+    display: grid;
+    gap: 0.6rem;
+  }
+
+  .cert-item {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.7rem 0.9rem;
+    background: rgba(255,255,255,0.02);
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--border);
+    font-size: 0.82rem;
+    color: var(--text-muted);
+    text-decoration: none;
+    transition: all 0.2s;
+  }
+
+  .cert-item:hover { border-color: var(--border-hover); color: var(--text); }
+
+  .cert-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--accent);
+    flex-shrink: 0;
+  }
+
+  .cert-status {
+    margin-left: auto;
+    font-size: 0.7rem;
+    color: var(--accent);
+    background: var(--accent-dim);
+    padding: 0.15rem 0.5rem;
+    border-radius: 100px;
+    border: 1px solid rgba(184,255,87,0.2);
+  }
+
+  /* ── SKILLS ── */
+  #skills { padding: 7rem 0; background: var(--bg2); }
+
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+
+  .skill-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 2rem;
+    transition: border-color 0.2s;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .skill-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+
+  .skill-card:hover { border-color: var(--border-hover); }
+  .skill-card:hover::before { opacity: 1; }
+
+  .skill-card.ux::before { background: var(--accent2); }
+  .skill-card.wp::before { background: var(--accent); }
+  .skill-card.seo::before { background: var(--accent3); }
+  .skill-card.figma::before { background: #ff7262; }
+
+  .skill-card.seo {
+    grid-column: 1 / -1;
+    background: rgba(255,107,53,0.04);
+    border-color: rgba(255,107,53,0.15);
+  }
+
+  .skill-card-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .skill-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    flex-shrink: 0;
+  }
+
+  .skill-icon.ux { background: var(--accent-dim2); }
+  .skill-icon.wp { background: var(--accent-dim); }
+  .skill-icon.seo { background: rgba(255,107,53,0.12); }
+  .skill-icon.figma { background: rgba(255,114,98,0.12); }
+
+  .skill-name {
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 1.2rem;
+    color: var(--text);
+    margin-bottom: 0.25rem;
+  }
+
+  .skill-tagline {
+    font-size: 0.82rem;
+    color: var(--text-muted);
+  }
+
+  .skill-new-badge {
+    margin-left: auto;
+    font-size: 0.7rem;
+    font-weight: 600;
+    color: var(--accent3);
+    background: rgba(255,107,53,0.12);
+    padding: 0.2rem 0.6rem;
+    border-radius: 100px;
+    border: 1px solid rgba(255,107,53,0.25);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  .skill-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .skill-tag {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    background: rgba(255,255,255,0.05);
+    padding: 0.25rem 0.65rem;
+    border-radius: 100px;
+    border: 1px solid var(--border);
+    line-height: 1.4;
+  }
+
+  .seo-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    margin-top: 1rem;
+  }
+
+  .seo-pillar {
+    background: rgba(255,255,255,0.02);
+    border: 1px solid rgba(255,107,53,0.1);
+    border-radius: var(--radius-sm);
+    padding: 1rem;
+  }
+
+  .seo-pillar-title {
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: var(--accent3);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin-bottom: 0.6rem;
+  }
+
+  .seo-pillar ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+  }
+
+  .seo-pillar li {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    padding-left: 0.9rem;
+    position: relative;
+    line-height: 1.4;
+  }
+
+  .seo-pillar li::before {
+    content: '›';
+    position: absolute;
+    left: 0;
+    color: var(--accent3);
+    font-weight: 600;
+  }
+
+  /* ── EXPERIENCE ── */
+  #experience { padding: 7rem 0; }
+
+  .timeline {
+    position: relative;
+    padding-left: 2rem;
+  }
+
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.5rem;
+    bottom: 0;
+    width: 1px;
+    background: var(--border);
+  }
+
+  .timeline-item {
+    position: relative;
+    padding-bottom: 3rem;
+  }
+
+  .timeline-item:last-child { padding-bottom: 0; }
+
+  .timeline-dot {
+    position: absolute;
+    left: -2.35rem;
+    top: 0.4rem;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    border: 2px solid var(--bg);
+    background: var(--text-dim);
+    transition: background 0.2s;
+  }
+
+  .timeline-item.current .timeline-dot { background: var(--accent); }
+
+  .timeline-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 0.5rem;
+    gap: 1rem;
+  }
+
+  .timeline-role {
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: var(--text);
+  }
+
+  .timeline-period {
+    font-size: 0.78rem;
+    color: var(--text-muted);
+    white-space: nowrap;
+    padding: 0.2rem 0.65rem;
+    border: 1px solid var(--border);
+    border-radius: 100px;
+    flex-shrink: 0;
+  }
+
+  .timeline-period.active {
+    border-color: rgba(184,255,87,0.25);
+    color: var(--accent);
+    background: var(--accent-dim);
+  }
+
+  .timeline-company {
+    font-size: 0.88rem;
+    color: var(--accent2);
+    margin-bottom: 0.75rem;
+    font-weight: 500;
+  }
+
+  .timeline-desc {
+    color: var(--text-muted);
+    font-size: 0.88rem;
+    line-height: 1.7;
+    margin-bottom: 0.75rem;
+  }
+
+  .timeline-achievements {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+    margin-bottom: 1rem;
+  }
+
+  .timeline-achievements li {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    padding-left: 1.1rem;
+    position: relative;
+    line-height: 1.55;
+  }
+
+  .timeline-achievements li::before {
+    content: '—';
+    position: absolute;
+    left: 0;
+    color: var(--text-dim);
+    font-size: 0.75rem;
+  }
+
+  .timeline-techs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    margin-top: 0.75rem;
+  }
+
+  .tech-tag {
+    font-size: 0.72rem;
+    color: var(--text-muted);
+    background: rgba(255,255,255,0.04);
+    padding: 0.2rem 0.6rem;
+    border-radius: 100px;
+    border: 1px solid var(--border);
+  }
+
+  .project-count {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    font-size: 0.75rem;
+    color: var(--accent);
+    font-weight: 500;
+    margin-top: 0.5rem;
+  }
+
+  /* ── PROJECTS ── */
+  #projects { padding: 7rem 0; background: var(--bg2); }
+
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.25rem;
+  }
+
+  .project-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    overflow: hidden;
+    transition: all 0.25s;
+    text-decoration: none;
+    color: inherit;
+    display: block;
+  }
+
+  .project-card:hover { border-color: var(--border-hover); transform: translateY(-3px); }
+
+  .project-img {
+    width: 100%;
+    aspect-ratio: 16/10;
+    object-fit: cover;
+    display: block;
+    filter: grayscale(30%);
+    transition: filter 0.3s;
+  }
+
+  .project-card:hover .project-img { filter: grayscale(0%); }
+
+  .project-body {
+    padding: 1.25rem;
+  }
+
+  .project-category {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--accent);
+    font-weight: 500;
+    margin-bottom: 0.4rem;
+  }
+
+  .project-name {
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 1rem;
+    color: var(--text);
+    margin-bottom: 0.35rem;
+  }
+
+  .project-desc {
+    font-size: 0.82rem;
+    color: var(--text-muted);
+    line-height: 1.55;
+    margin-bottom: 0.85rem;
+  }
+
+  .project-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem;
+  }
+
+  .project-tag {
+    font-size: 0.68rem;
+    color: var(--text-dim);
+    background: rgba(255,255,255,0.04);
+    padding: 0.15rem 0.5rem;
+    border-radius: 100px;
+    border: 1px solid var(--border);
+  }
+
+  /* ── TOOLS ── */
+  #tools { padding: 5rem 0; }
+
+  .tools-label {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    text-align: center;
+    margin-bottom: 2.5rem;
+  }
+
+  .tools-track-wrap {
+    overflow: hidden;
+    mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+  }
+
+  .tools-track {
+    display: flex;
+    gap: 1.5rem;
+    animation: scroll-tools 30s linear infinite;
+    width: max-content;
+  }
+
+  @keyframes scroll-tools {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+
+  .tool-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1.1rem;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 100px;
+    font-size: 0.82rem;
+    color: var(--text-muted);
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  .tool-dot { width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0; }
+
+  /* ── CONTACT ── */
+  #contact { padding: 7rem 0; }
+
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    align-items: center;
+  }
+
+  .contact-cta-title {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: clamp(2rem, 4vw, 3rem);
+    letter-spacing: -0.03em;
+    line-height: 1.1;
+    margin-bottom: 1.25rem;
+  }
+
+  .contact-cta-title span { color: var(--accent); }
+
+  .contact-desc {
+    color: var(--text-muted);
+    font-size: 1rem;
+    line-height: 1.75;
+    margin-bottom: 2rem;
+  }
+
+  .contact-links {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .contact-link {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.1rem 1.25rem;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    text-decoration: none;
+    color: inherit;
+    transition: all 0.2s;
+    group: true;
+  }
+
+  .contact-link:hover { border-color: var(--border-hover); background: rgba(255,255,255,0.03); }
+
+  .contact-link-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    flex-shrink: 0;
+  }
+
+  .contact-link-icon.email { background: rgba(87,200,255,0.1); }
+  .contact-link-icon.phone { background: var(--accent-dim); }
+  .contact-link-icon.linkedin { background: rgba(10,102,194,0.15); }
+
+  .contact-link-label {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin-bottom: 0.15rem;
+  }
+
+  .contact-link-val {
+    font-size: 0.9rem;
+    color: var(--text);
+    font-weight: 400;
+  }
+
+  .contact-link-arrow {
+    margin-left: auto;
+    color: var(--text-dim);
+    font-size: 1.1rem;
+    transition: transform 0.2s, color 0.2s;
+  }
+
+  .contact-link:hover .contact-link-arrow { transform: translateX(3px); color: var(--text-muted); }
+
+  .availability-card {
+    background: rgba(184,255,87,0.05);
+    border: 1px solid rgba(184,255,87,0.15);
+    border-radius: var(--radius);
+    padding: 1.75rem;
+    margin-bottom: 2rem;
+  }
+
+  .avail-header {
+    display: flex;
+    align-items: center;
+    gap: 0.65rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .avail-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--accent);
+    animation: pulse 2s infinite;
+  }
+
+  .avail-title {
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 1rem;
+    color: var(--accent);
+  }
+
+  .avail-desc {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    line-height: 1.6;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    border-top: 1px solid var(--border);
+    padding: 2.5rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+    position: relative;
+    z-index: 1;
+  }
+
+  .footer-copy {
+    font-size: 0.8rem;
+    color: var(--text-dim);
+  }
+
+  .footer-links {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+  }
+
+  .footer-links a {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .footer-links a:hover { color: var(--text); }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    .hero-inner { grid-template-columns: 1fr; }
+    .hero-visual { display: none; }
+    .about-grid, .contact-grid { grid-template-columns: 1fr; gap: 3rem; }
+    .skills-grid { grid-template-columns: 1fr; }
+    .skill-card.seo { grid-column: 1; }
+    .seo-grid { grid-template-columns: 1fr; }
+    .projects-grid { grid-template-columns: repeat(2, 1fr); }
+    .nav-links { display: none; }
+  }
+
+  @media (max-width: 600px) {
+    .projects-grid { grid-template-columns: 1fr; }
+    .hero-stats { gap: 1.5rem; }
+    nav { padding: 1rem; }
+  }
+
+  /* ── SCROLL ANIMATIONS ── */
+  .fade-up {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+
+  .fade-up.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .fade-up:nth-child(2) { transition-delay: 0.1s; }
+  .fade-up:nth-child(3) { transition-delay: 0.2s; }
+  .fade-up:nth-child(4) { transition-delay: 0.3s; }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#hero" class="nav-logo">Eugine<span>.</span></a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#contact" class="nav-cta">Hire Me</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-inner">
+    <div class="hero-content">
+      <div class="hero-badge">Available for new projects</div>
+
+      <h1 class="hero-title">
+        Eugine
+        <span class="line2">Gomez<span class="highlight">.</span></span>
+      </h1>
+
+      <div class="hero-roles">
+        <span class="role-tag ux">UX Designer</span>
+        <span class="role-tag wp">WordPress Developer</span>
+        <span class="role-tag seo">SEO Specialist</span>
+      </div>
+
+      <p class="hero-desc">
+        I build digital experiences that <strong>rank on Google, convert visitors, and delight users</strong>. From Figma wireframes to WordPress deployment — with SEO baked in from day one.
+      </p>
+
+      <div class="hero-actions">
+        <a href="#projects" class="btn-primary">View My Work →</a>
+        <a href="https://docs.google.com/document/d/1JjZF_xZ9EXC6IPtxJjmQ_Qv8IDpHcW0n/edit" target="_blank" class="btn-secondary">Download Resume</a>
+      </div>
+
+      <div class="hero-stats">
+        <div class="stat-item">
+          <div class="stat-num">50<span>+</span></div>
+          <div class="stat-label">Projects Done</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">5<span>+</span></div>
+          <div class="stat-label">Years Experience</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">4<span>x</span></div>
+          <div class="stat-label">Companies</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-visual">
+      <div class="hero-img-wrap">
+        <img src="https://enginegomz.github.io/my-portfolio/assets/me.png" alt="Eugine Gomez">
+      </div>
+      <div class="hero-float-badge">
+        <div class="float-badge-label">Location</div>
+        <div class="float-badge-val">📍 Davao, PH</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- TOOLS STRIP -->
+<section id="tools">
+  <div class="container">
+    <p class="tools-label">Tech Stack & Tools</p>
+    <div class="tools-track-wrap">
+      <div class="tools-track" id="toolsTrack">
+        <span class="tool-pill"><span class="tool-dot" style="background:#b8ff57"></span>WordPress</span>
+        <span class="tool-pill"><span class="tool-dot" style="background:#57c8ff"></span>Figma</span>
+        <span class="tool-pill"><span class="tool-dot" style="background:#ff6b35"></span>Google Analytics</span>
+        <span class="tool-pill"><span class="tool-dot" style="background:#b8ff57"></span>Elementor</span>
+        <span class="tool-pill"><span class="tool-dot" style="background:#ff7262"></span>Search Console</span>
+        <span class="tool-pill"><span class="tool-dot" style="background:#57c8ff"></span>HTML/CSS/JS</span>
+        <span class="tool-pill"><span class="tool-dot" style="background:#ff6b35"></span>Yoast SEO</span>
+        <span class="tool-pill"><span class="tool-dot" style="background:#b8ff57"></span>ACF</span>
+        <span class="tool-pill"><span class="tool-dot" style="background:#57c8ff"></span>WooCommerce</span>
+        <span class="tool-pill"><span class="tool-dot" style="background:#ff6b35"></span>RankMath</span>
+        <span class="tool-pill"><span class="tool-dot" style="background:#b8ff57"></span>PHP</span>
+        <span class="tool-pill"><span class="tool-dot" style="background:#57c8ff"></span>Ahrefs / SEMrush</span>
+        <span class="tool-pill"><span class="tool-dot" style="background:#ff7262"></span>cPanel</span>
+        <span class="tool-pill"><span class="tool-dot" style="background:#b8ff57"></span>Google Tag Manager</span>
+        <!-- duplicate for seamless loop -->
+        <span class="tool-pill"><span class="tool-dot" style="background:#b8ff57"></span>WordPress</span>
+        <span class="tool-pill"><span class="tool-dot" style="background:#57c8ff"></span>Figma</span>
+        <span class="tool-pill"><span class="tool-dot" style="background:#ff6b35"></span>Google Analytics</span>
+        <span class="tool-pill"><span class="tool-dot" style="background:#b8ff57"></span>Elementor</span>
+        <span class="tool-pill"><span class="tool-dot" style="background:#ff7262"></span>Search Console</span>
+        <span class="tool-pill"><span class="tool-dot" style="background:#57c8ff"></span>HTML/CSS/JS</span>
+        <span class="tool-pill"><span class="tool-dot" style="background:#ff6b35"></span>Yoast SEO</span>
+        <span class="tool-pill"><span class="tool-dot" style="background:#b8ff57"></span>ACF</span>
+        <span class="tool-pill"><span class="tool-dot" style="background:#57c8ff"></span>WooCommerce</span>
+        <span class="tool-pill"><span class="tool-dot" style="background:#ff6b35"></span>RankMath</span>
+        <span class="tool-pill"><span class="tool-dot" style="background:#b8ff57"></span>PHP</span>
+        <span class="tool-pill"><span class="tool-dot" style="background:#57c8ff"></span>Ahrefs / SEMrush</span>
+        <span class="tool-pill"><span class="tool-dot" style="background:#ff7262"></span>cPanel</span>
+        <span class="tool-pill"><span class="tool-dot" style="background:#b8ff57"></span>Google Tag Manager</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-text">
+        <div class="section-label">About Me</div>
+        <h2 class="section-title">Design meets<br>performance.</h2>
+        <p>I'm a <strong>BS Information Technology graduate</strong> from Davao del Norte State College who discovered early that my strength isn't just building websites — it's creating digital experiences that help businesses grow.</p>
+        <p>Over 5 years, I've grown from WordPress technical support to a full-stack practitioner who handles everything from <strong>Figma wireframes to on-page SEO</strong>, interactive dashboards, and conversion-optimized builds.</p>
+        <p>What sets me apart is my business-first mindset. I understand how users think, how search engines index, and how design influences buying behavior — and I bring all three to every project.</p>
+
+        <div class="about-highlights">
+          <div class="highlight-item">
+            <div class="highlight-icon green">🎯</div>
+            <div>
+              <div class="highlight-title">Conversion-Focused Design</div>
+              <div class="highlight-desc">Every design decision is measured against business outcomes and user intent.</div>
+            </div>
+          </div>
+          <div class="highlight-item">
+            <div class="highlight-icon blue">⚡</div>
+            <div>
+              <div class="highlight-title">SEO-First Development</div>
+              <div class="highlight-desc">Technical SEO, site speed, and schema baked into every WordPress build.</div>
+            </div>
+          </div>
+          <div class="highlight-item">
+            <div class="highlight-icon orange">🔧</div>
+            <div>
+              <div class="highlight-title">Interactive & Dynamic Systems</div>
+              <div class="highlight-desc">Client dashboards, real-time data tools, and custom plugin integrations.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <div class="about-info-box">
+          <div class="info-row">
+            <span class="info-key">Location</span>
+            <span class="info-val">Panabo City, Davao del Norte, PH</span>
+          </div>
+          <div class="info-row">
+            <span class="info-key">Education</span>
+            <span class="info-val">BS Information Technology<br>Davao Del Norte State College</span>
+          </div>
+          <div class="info-row">
+            <span class="info-key">Experience</span>
+            <span class="info-val">5+ Years</span>
+          </div>
+          <div class="info-row">
+            <span class="info-key">Projects</span>
+            <span class="info-val">50+ Completed</span>
+          </div>
+          <div class="info-row">
+            <span class="info-key">Email</span>
+            <span class="info-val">engine.gomz@gmail.com</span>
+          </div>
+          <div class="info-row">
+            <span class="info-key">LinkedIn</span>
+            <span class="info-val">linkedin.com/in/enginegomz</span>
+          </div>
+        </div>
+
+        <p style="font-size:0.78rem;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.08em;margin:2rem 0 0.75rem;">Google UX Design Certifications</p>
+
+        <div class="cert-grid">
+          <a href="https://coursera.org/share/a8a1221e2e6f6f7baf85ce28cb636080" target="_blank" class="cert-item">
+            <span class="cert-dot"></span>
+            Course 1 — Foundations of UX Design
+            <span class="cert-status">✓ Verified</span>
+          </a>
+          <a href="https://coursera.org/share/5a67b4c6bc264fe940f7f61d52431284" target="_blank" class="cert-item">
+            <span class="cert-dot"></span>
+            Course 2 — Empathize, Define, Ideate
+            <span class="cert-status">✓ Verified</span>
+          </a>
+          <a href="https://coursera.org/share/164b40240df91f2c4df33aea5972010a" target="_blank" class="cert-item">
+            <span class="cert-dot"></span>
+            Course 3 — Wireframes & Prototypes
+            <span class="cert-status">✓ Verified</span>
+          </a>
+          <a href="https://coursera.org/share/b235ac335b373d56b610a4542e6395b6" target="_blank" class="cert-item">
+            <span class="cert-dot"></span>
+            Course 4 — UX Research & Testing
+            <span class="cert-status">✓ Verified</span>
+          </a>
+          <a href="https://coursera.org/share/92b8b2cea7ee54bf5b0d76ba0eccf88f" target="_blank" class="cert-item">
+            <span class="cert-dot"></span>
+            Course 5 — High-Fidelity Designs in Figma
+            <span class="cert-status">✓ Verified</span>
+          </a>
+          <a href="https://coursera.org/share/5601cf5d5e82900d1a84dfd1422c6263" target="_blank" class="cert-item">
+            <span class="cert-dot"></span>
+            Course 6 — Dynamic UI for Websites
+            <span class="cert-status">✓ Verified</span>
+          </a>
+          <a href="https://coursera.org/share/0224db621900cf8ffaaaac2d392c0be9" target="_blank" class="cert-item">
+            <span class="cert-dot"></span>
+            Course 7 — UX for Social Good
+            <span class="cert-status">✓ Verified</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="container">
+    <div class="section-label">Capabilities</div>
+    <h2 class="section-title">What I Bring</h2>
+    <p class="section-subtitle">A full-stack skillset that spans user experience, WordPress engineering, and SEO-driven growth strategy.</p>
+
+    <div class="skills-grid">
+
+      <!-- UX Design -->
+      <div class="skill-card ux fade-up">
+        <div class="skill-card-header">
+          <div class="skill-icon ux">🎨</div>
+          <div>
+            <div class="skill-name">UX Design</div>
+            <div class="skill-tagline">Research → Wireframes → High-Fidelity Figma</div>
+          </div>
+        </div>
+        <div class="skill-tags">
+          <span class="skill-tag">User Research</span>
+          <span class="skill-tag">Persona Development</span>
+          <span class="skill-tag">Journey Mapping</span>
+          <span class="skill-tag">Information Architecture</span>
+          <span class="skill-tag">Wireframing</span>
+          <span class="skill-tag">Prototyping</span>
+          <span class="skill-tag">Usability Testing</span>
+          <span class="skill-tag">Accessibility (WCAG)</span>
+          <span class="skill-tag">Design Systems</span>
+          <span class="skill-tag">Figma</span>
+        </div>
+      </div>
+
+      <!-- WordPress Development -->
+      <div class="skill-card wp fade-up">
+        <div class="skill-card-header">
+          <div class="skill-icon wp">⚙️</div>
+          <div>
+            <div class="skill-name">WordPress Development</div>
+            <div class="skill-tagline">Figma → Pixel-Perfect WP Builds</div>
+          </div>
+        </div>
+        <div class="skill-tags">
+          <span class="skill-tag">Elementor Pro</span>
+          <span class="skill-tag">Custom Theme Dev</span>
+          <span class="skill-tag">ACF & CPTs</span>
+          <span class="skill-tag">WooCommerce</span>
+          <span class="skill-tag">PHP Customization</span>
+          <span class="skill-tag">REST API / Integrations</span>
+          <span class="skill-tag">Site Speed Optimization</span>
+          <span class="skill-tag">cPanel & Deployment</span>
+          <span class="skill-tag">Cross-Browser QA</span>
+          <span class="skill-tag">Mobile-First Responsive</span>
+        </div>
+      </div>
+
+      <!-- SEO Specialist — FEATURED / NEW -->
+      <div class="skill-card seo fade-up">
+        <div class="skill-card-header">
+          <div class="skill-icon seo">📈</div>
+          <div>
+            <div class="skill-name">SEO Specialist & Interactive Development</div>
+            <div class="skill-tagline">Organic growth + real-time dashboards + WordPress performance</div>
+          </div>
+          <span class="skill-new-badge">New</span>
+        </div>
+
+        <div class="seo-grid">
+          <div class="seo-pillar">
+            <div class="seo-pillar-title">🔍 SEO Strategy</div>
+            <ul>
+              <li>On-page & technical SEO</li>
+              <li>Keyword research & gap analysis</li>
+              <li>Competitor analysis</li>
+              <li>Schema markup & structured data</li>
+              <li>Core Web Vitals optimization</li>
+              <li>Yoast / RankMath configuration</li>
+              <li>Google Search Console & Analytics</li>
+              <li>SEO-friendly content & landing pages</li>
+            </ul>
+          </div>
+          <div class="seo-pillar">
+            <div class="seo-pillar-title">💡 Interactive Development</div>
+            <ul>
+              <li>Client & staff dashboards</li>
+              <li>Real-time data input systems</li>
+              <li>Plugin & API integrations</li>
+              <li>Dynamic WordPress functionality</li>
+              <li>Secure user data workflows</li>
+              <li>Custom forms & data displays</li>
+              <li>UX-focused interactive UI/UX</li>
+              <li>CRM & data integration tools</li>
+            </ul>
+          </div>
+          <div class="seo-pillar">
+            <div class="seo-pillar-title">🛡 Performance & Maintenance</div>
+            <ul>
+              <li>Site speed & performance audits</li>
+              <li>Security, backups & updates</li>
+              <li>Issue diagnosis & troubleshooting</li>
+              <li>Organic traffic tracking & reporting</li>
+              <li>Continuous UX/SEO improvement</li>
+              <li>Mobile responsiveness QA</li>
+              <li>Google Tag Manager setup</li>
+              <li>Accessibility compliance</li>
+            </ul>
+          </div>
+        </div>
+
+        <div style="margin-top:1.25rem;padding-top:1.25rem;border-top:1px solid rgba(255,107,53,0.1)">
+          <div style="font-size:0.75rem;color:var(--text-muted);margin-bottom:0.65rem;text-transform:uppercase;letter-spacing:0.06em;">Tools & Platforms</div>
+          <div class="skill-tags">
+            <span class="skill-tag">Google Analytics 4</span>
+            <span class="skill-tag">Google Search Console</span>
+            <span class="skill-tag">Ahrefs / SEMrush</span>
+            <span class="skill-tag">Yoast SEO</span>
+            <span class="skill-tag">RankMath</span>
+            <span class="skill-tag">Google Tag Manager</span>
+            <span class="skill-tag">PageSpeed Insights</span>
+            <span class="skill-tag">Screaming Frog</span>
+            <span class="skill-tag">WordPress REST API</span>
+            <span class="skill-tag">ACF Pro</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="container">
+    <div class="section-label">Career</div>
+    <h2 class="section-title">Professional Journey</h2>
+    <p class="section-subtitle">5+ years growing from technical support to full-stack UX/WordPress/SEO practitioner.</p>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start;">
+      <div class="timeline">
+
+        <div class="timeline-item current">
+          <div class="timeline-dot"></div>
+          <div class="timeline-header">
+            <div class="timeline-role">WordPress Developer</div>
+            <div class="timeline-period active">Present</div>
+          </div>
+          <div class="timeline-company">Codebility</div>
+          <p class="timeline-desc">Freelance WordPress developer designing and maintaining responsive, user-friendly pages. Implementing SEO strategies and CRO while collaborating with teams to improve UX.</p>
+          <ul class="timeline-achievements">
+            <li>Creating layouts and landing pages aligned with brand identity</li>
+            <li>Implementing on-page SEO and conversion rate optimization</li>
+            <li>Collaborating cross-functionally to improve performance metrics</li>
+          </ul>
+          <div class="timeline-techs">
+            <span class="tech-tag">WordPress</span>
+            <span class="tech-tag">Figma</span>
+            <span class="tech-tag">SEO</span>
+            <span class="tech-tag">CRO</span>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-header">
+            <div class="timeline-role">WordPress Developer</div>
+            <div class="timeline-period">Apr 2024 – Dec 2024</div>
+          </div>
+          <div class="timeline-company">OceanStudio360</div>
+          <p class="timeline-desc">Managed full website lifecycle: cPanel setup, theme/plugin customization, and deployment.</p>
+          <ul class="timeline-achievements">
+            <li>Enhanced website performance and user experience through optimization</li>
+            <li>Handled end-to-end site management across 4 projects</li>
+          </ul>
+          <div class="project-count">▲ 4 Projects Delivered</div>
+          <div class="timeline-techs">
+            <span class="tech-tag">WordPress</span>
+            <span class="tech-tag">cPanel</span>
+            <span class="tech-tag">Performance Optimization</span>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="timeline">
+
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-header">
+            <div class="timeline-role">WordPress Developer</div>
+            <div class="timeline-period">Nov 2023 – Apr 2024</div>
+          </div>
+          <div class="timeline-company">BrandRep</div>
+          <p class="timeline-desc">Interpreting business blueprints into WordPress websites at scale.</p>
+          <ul class="timeline-achievements">
+            <li>Built templated WP sites from writers' and designers' briefs</li>
+            <li>Ensured consistency with SEO-ready structures across all clients</li>
+          </ul>
+          <div class="project-count">▲ 10 Projects Delivered</div>
+          <div class="timeline-techs">
+            <span class="tech-tag">WordPress</span>
+            <span class="tech-tag">SEO Structure</span>
+            <span class="tech-tag">Templating</span>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-header">
+            <div class="timeline-role">WordPress Technical Support</div>
+            <div class="timeline-period">Nov 2020 – Aug 2023</div>
+          </div>
+          <div class="timeline-company">BORN Digital — WebeeLabs ltd.</div>
+          <p class="timeline-desc">Started professional journey providing technical support while growing into design-to-development conversion. Also trained for 6 months as an Infrastructure Engineer focused on Azure & DevOps.</p>
+          <ul class="timeline-achievements">
+            <li>Converted Figma, Adobe XD, InVision & Photoshop designs to WordPress via Elementor & custom theming</li>
+            <li>Maintained client sites and supported design-to-dev workflows</li>
+            <li>Chased bugs, errors, and deployment issues across 39 projects</li>
+          </ul>
+          <div class="project-count">▲ 39 Projects Delivered</div>
+          <div class="timeline-techs">
+            <span class="tech-tag">Elementor</span>
+            <span class="tech-tag">Figma to WP</span>
+            <span class="tech-tag">Azure</span>
+            <span class="tech-tag">DevOps</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="container">
+    <div class="section-label">Work</div>
+    <h2 class="section-title">Featured Projects</h2>
+    <p class="section-subtitle">A selection of recent builds showcasing design-to-development precision and SEO-conscious architecture.</p>
+
+    <div class="projects-grid">
+
+      <a href="https://franksalt.com.mt" target="_blank" class="project-card">
+        <img src="https://enginegomz.github.io/my-portfolio/assets/franksalt.jpg" alt="Franksalt" class="project-img">
+        <div class="project-body">
+          <div class="project-category">WordPress · Live</div>
+          <div class="project-name">Franksalt</div>
+          <div class="project-desc">Real estate platform built on WordPress with WooCommerce integration and third-party API connections.</div>
+          <div class="project-tags">
+            <span class="project-tag">WordPress</span>
+            <span class="project-tag">WooCommerce</span>
+            <span class="project-tag">3rd Party API</span>
+            <span class="project-tag">Responsive</span>
+          </div>
+        </div>
+      </a>
+
+      <a href="https://www.kluedskincare.com/" target="_blank" class="project-card">
+        <img src="https://enginegomz.github.io/my-portfolio/assets/After.png" alt="Klued Skincare" class="project-img">
+        <div class="project-body">
+          <div class="project-category">Shopify · Case Study</div>
+          <div class="project-name">Klued Skincare Redesign</div>
+          <div class="project-desc">Complete Shopify store transformation focusing on UX, conversion optimization, and brand consistency.</div>
+          <div class="project-tags">
+            <span class="project-tag">Shopify</span>
+            <span class="project-tag">UX Redesign</span>
+            <span class="project-tag">CRO</span>
+          </div>
+        </div>
+      </a>
+
+      <a href="https://docs.google.com/presentation/d/1iRYR1zP2HRSrKD82ojX9VJY1mEx6o7P-3aqi1FFwnoY/edit" target="_blank" class="project-card">
+        <img src="https://enginegomz.github.io/my-portfolio/FigmaProjects/botique.jpg" alt="Boutique" class="project-img">
+        <div class="project-body">
+          <div class="project-category">Figma · Mobile</div>
+          <div class="project-name">Boutique Store App</div>
+          <div class="project-desc">Modern mobile-first landing page design with bold visuals and conversion-focused fashion layout.</div>
+          <div class="project-tags">
+            <span class="project-tag">Figma</span>
+            <span class="project-tag">Mobile Layout</span>
+            <span class="project-tag">Fashion</span>
+          </div>
+        </div>
+      </a>
+
+      <a href="https://enginegomz.github.io/my-portfolio/FigmaProjects/Trendora-EcommerceLandingPage.png" target="_blank" class="project-card">
+        <img src="https://enginegomz.github.io/my-portfolio/FigmaProjects/Trendora-EcommerceLandingPage.png" alt="Trendora" class="project-img">
+        <div class="project-body">
+          <div class="project-category">Figma · E-commerce</div>
+          <div class="project-name">Trendora E-commerce</div>
+          <div class="project-desc">Clean e-commerce landing page focused on product showcase and mobile-first UX design principles.</div>
+          <div class="project-tags">
+            <span class="project-tag">Figma</span>
+            <span class="project-tag">E-commerce</span>
+            <span class="project-tag">UX Design</span>
+          </div>
+        </div>
+      </a>
+
+      <a href="https://enginegomz.github.io/my-portfolio/FigmaProjects/InstaCareThesisRedesign.png" target="_blank" class="project-card">
+        <img src="https://enginegomz.github.io/my-portfolio/FigmaProjects/InstaCareThesisRedesign.png" alt="InstaCare" class="project-img">
+        <div class="project-body">
+          <div class="project-category">Figma · Healthcare</div>
+          <div class="project-name">InstaCare Redesign</div>
+          <div class="project-desc">Healthcare platform redesign emphasizing trust, accessibility, and streamlined user flow for patients.</div>
+          <div class="project-tags">
+            <span class="project-tag">Figma</span>
+            <span class="project-tag">Healthcare</span>
+            <span class="project-tag">Accessibility</span>
+          </div>
+        </div>
+      </a>
+
+      <a href="https://docs.google.com/presentation/d/1iRYR1zP2HRSrKD82ojX9VJY1mEx6o7P-3aqi1FFwnoY/edit" target="_blank" class="project-card" style="background:rgba(184,255,87,0.03);border-color:rgba(184,255,87,0.1);">
+        <div style="width:100%;aspect-ratio:16/10;display:flex;align-items:center;justify-content:center;background:rgba(184,255,87,0.05);">
+          <span style="font-size:2.5rem;">📋</span>
+        </div>
+        <div class="project-body">
+          <div class="project-category" style="color:var(--accent)">UX Case Study</div>
+          <div class="project-name">Kylle Grown Garden</div>
+          <div class="project-desc">Full UX case study including research, persona development, journey mapping, and high-fidelity prototype.</div>
+          <div class="project-tags">
+            <span class="project-tag">UX Research</span>
+            <span class="project-tag">Case Study</span>
+            <span class="project-tag">Figma</span>
+          </div>
+        </div>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="container">
+    <div class="contact-grid">
+      <div>
+        <div class="section-label">Get in Touch</div>
+        <h2 class="contact-cta-title">Let's build<br>something <span>great.</span></h2>
+        <p class="contact-desc">Looking for a WordPress developer who can also drive organic growth and build interactive features? I'm currently open to project-based and full-time opportunities.</p>
+
+        <div class="availability-card">
+          <div class="avail-header">
+            <div class="avail-dot"></div>
+            <div class="avail-title">Available for New Projects</div>
+          </div>
+          <div class="avail-desc">Open to SEO specialist, WordPress development, and UX design roles — project-based or long-term. Remote-friendly.</div>
+        </div>
+
+        <a href="https://docs.google.com/document/d/1JjZF_xZ9EXC6IPtxJjmQ_Qv8IDpHcW0n/edit" target="_blank" class="btn-primary" style="margin-bottom:1rem;display:inline-flex;">Download Resume →</a>
+      </div>
+
+      <div class="contact-links">
+        <a href="mailto:engine.gomz@gmail.com" class="contact-link">
+          <div class="contact-link-icon email">📧</div>
+          <div>
+            <div class="contact-link-label">Email</div>
+            <div class="contact-link-val">engine.gomz@gmail.com</div>
+          </div>
+          <span class="contact-link-arrow">→</span>
+        </a>
+
+        <a href="tel:+639266779935" class="contact-link">
+          <div class="contact-link-icon phone">📱</div>
+          <div>
+            <div class="contact-link-label">Phone</div>
+            <div class="contact-link-val">+63 926 677 9935</div>
+          </div>
+          <span class="contact-link-arrow">→</span>
+        </a>
+
+        <a href="https://www.linkedin.com/in/enginegomz/" target="_blank" class="contact-link">
+          <div class="contact-link-icon linkedin">💼</div>
+          <div>
+            <div class="contact-link-label">LinkedIn</div>
+            <div class="contact-link-val">linkedin.com/in/enginegomz</div>
+          </div>
+          <span class="contact-link-arrow">→</span>
+        </a>
+
+        <a href="https://enginegomz.github.io/my-portfolio/" target="_blank" class="contact-link">
+          <div class="contact-link-icon" style="background:rgba(255,255,255,0.05);">🌐</div>
+          <div>
+            <div class="contact-link-label">Current Portfolio</div>
+            <div class="contact-link-val">enginegomz.github.io/my-portfolio</div>
+          </div>
+          <span class="contact-link-arrow">→</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-copy">© 2026 Eugine Gomez. All rights reserved.</div>
+  <ul class="footer-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="mailto:engine.gomz@gmail.com">Contact</a></li>
+  </ul>
+</footer>
+
+<script>
+  // Scroll animations
+  const fadeEls = document.querySelectorAll('.fade-up');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.1 });
+  fadeEls.forEach(el => io.observe(el));
+
+  // Smooth active nav highlight
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('.nav-links a');
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(s => {
+      if (window.scrollY >= s.offsetTop - 120) current = s.id;
+    });
+    navLinks.forEach(a => {
+      a.style.color = a.getAttribute('href') === '#' + current ? 'var(--text)' : '';
+    });
+  });
+</script>
+
+</body>
+</html>
